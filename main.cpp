@@ -34,8 +34,9 @@ int main(){
     else{
         lenSubstr = n;
     }
-    int quantidade = 0;
-    while(lenSubstr>=2){
+    // int quantidade = 0;
+    int minLen=-1;
+    while(lenSubstr>=2 && lenSubstr > minLen){
         indexA = 0;
         while(indexA<n-lenSubstr){
             std::string subA = a.substr(indexA, lenSubstr);
@@ -49,12 +50,14 @@ int main(){
                     if(foundB == ListaB.end()){
                         ListaB.push_back(subB);
                         totalScore = strCompare(subA, subB, lenSubstr);
-                        quantidade++;
+                        // quantidade++;
                         if(totalScoreGlobal<totalScore){
                             totalScoreGlobal = totalScore;
+                            minLen = totalScoreGlobal/2+1;
                             bestA = subA;
                             bestB = subB;
                         }
+                        // std::cout << "subStr: " << lenSubstr << std::endl << "minLen: " << minLen << std::endl;
                     }
                     indexB++;
                     // std::cout << "subA: " << subA << std::endl << "subB: " << subB << std::endl;
@@ -66,7 +69,7 @@ int main(){
         lenSubstr--;
         ListaA.clear();
     }
-    std::cout << "combinacoes: " << quantidade << std::endl;
+    // std::cout << "combinacoes: " << quantidade << std::endl;
     std::ofstream outfile ("output.txt");
     outfile << totalScoreGlobal << std::endl << "bestA: " << bestA << std::endl << "bestB: " << bestB << std::endl;
     outfile.close();
