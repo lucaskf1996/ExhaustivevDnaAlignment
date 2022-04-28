@@ -5,7 +5,7 @@
 
 int strCompare(std::string subA, std::string subB, int lenSubstr){
     int totalScore = 0;
-    for(int i = 0; i<lenSubstr; i++){
+    for(int i = 0; i<=lenSubstr; i++){
             if(subA[i] == subB[i]){
                 totalScore+=2;
             }
@@ -27,7 +27,7 @@ int main(){
     std::vector <std::string> ListaB{};
     int lenSubstr, indexA, indexB, totalScore;
     int totalScoreGlobal = 0;
-    std::string bestA, bestB;
+    std::string bestA, bestB; 
     if(n>m){
         lenSubstr = m;
     }
