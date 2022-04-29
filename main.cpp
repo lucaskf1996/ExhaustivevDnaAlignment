@@ -39,13 +39,13 @@ int main(){
     while(lenSubstr>=2 && lenSubstr > minLen){
         indexA = 0;
         while(indexA<n-lenSubstr){
-            std::string subA = a.substr(indexA, lenSubstr);
+            std::string subA = a.substr(indexA, lenSubstr+1);
             auto foundA = std::find(ListaA.begin(), ListaA.end(), subA);
             if(foundA == ListaA.end()){
                 ListaA.push_back(subA);
                 indexB = 0;
                 while(indexB<m-lenSubstr){
-                    std::string subB = b.substr(indexB, lenSubstr);
+                    std::string subB = b.substr(indexB, lenSubstr+1);
                     auto foundB = std::find(ListaB.begin(), ListaB.end(), subB);
                     if(foundB == ListaB.end()){
                         ListaB.push_back(subB);
@@ -56,11 +56,12 @@ int main(){
                             minLen = totalScoreGlobal/2+1;
                             bestA = subA;
                             bestB = subB;
+                            std::cout << std::endl << "bestA: " << bestA << std::endl << "bestB: " << bestB << std::endl;
                         }
                         // std::cout << "subStr: " << lenSubstr << std::endl << "minLen: " << minLen << std::endl;
                     }
                     indexB++;
-                    // std::cout << "subA: " << subA << std::endl << "subB: " << subB << std::endl;
+                    // std::cout << "maxScore: " << totalScoreGlobal << std::endl << "subA: " << subA << std::endl << "subB: " << subB << std::endl;
                 }
                 ListaB.clear();
             }
